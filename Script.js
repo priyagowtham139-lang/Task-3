@@ -1,317 +1,238 @@
-//Section 1:Printing & user Interaction
- 
-// 1. Print your name and designation in the console
- 
-console.log("Name: Priyadharsini");
- 
-console.log("Designation: Frontend Developer");
- 
-// 2. Show an alert message
- 
-alert("Welcome to JavaScript Session");
- 
-// 3. Ask user using confirm() and print the result
- 
-let result = confirm("Do you like coding?");
- 
-console.log(result);
- 
-// 4. Take input using prompt() and print it
- 
-let favFood = prompt("Enter your favorite food:");
- 
-console.log("Favorite Food: " + favFood);
- 
-// 5. Display message on UI using document.writeln()
- 
-document.writeln("Good Evening Team");
- 
-//Section 2:Console Methos
- 
-// 6. Print a number using console.log()
- 
-console.log(100);
- 
-// 7. Print a warning message
- 
-console.warn("This is a warning");
- 
-// 8. Print an error message
- 
-console.error("Something went wrong!");
- 
-// 9. Clear the console after printing 3 messages
- 
-9.console.log("Message 1");
- 
-console.log("Message 2");
- 
-console.log("Message 3");
- 
-console.clear();
- 
-//Section 3:Data Types
- 
-// 10. Create a variable with your name and print its type
- 
-let name = "Priyadharsini";
- 
-console.log(name);
- 
-console.log(typeof name); // string
- 
-//11. Store your age and print the datatype
- 
-let age = 28;
- 
-console.log(age);
- 
-console.log(typeof age); // number
- 
-// 12. Store a boolean value and print it
- 
-let isStudent = true;
- 
-console.log(isStudent);
- 
-console.log(typeof isStudent); // boolean
- 
-// 13. Declare a variable without value and print it
- 
-let value;
- 
-console.log(value); // undefined
- 
-console.log(typeof value); // undefined
- 
-// 14. Assign null to a variable and print it
- 
-let data = null;
- 
-console.log(data); // null
- 
-console.log(typeof data); // object (JavaScript behavior)
- 
-//Secton 4:Arrays
- 
-// 15. Create an array of 5 fruits and print it
- 
-let fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
- 
-console.log("Fruits Array:", fruits);
- 
-// 16. Print the first and last element of the array
- 
-let fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
- 
-console.log("First Fruit:", fruits[0]);
- 
-console.log("Last Fruit:", fruits[fruits.length - 1]);
- 
-// 17. Add one more fruit dynamically and print updated array
- 
-let fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
- 
-fruits.push("Pineapple");
- 
-console.log("After Adding Fruit:", fruits);
- 
-// 18. Remove the last element and print array
- 
-let fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
- 
-fruits.pop();
- 
-console.log("After Removing Last Fruit:", fruits);
- 
-// 19. Find the length of the array
- 
-let fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
- 
-console.log("Array Length:", fruits.length);
- 
-//Section 5:Objects
- 
-// 20. Create an object for a student (name, age, course)
- 
-let student = {
- 
-name: "Priyadharsini",
- 
-age: 28,
- 
-course: "B.sc",
- 
-// Nested array (for step 4)
- 
-fruits: ["Apple", "Banana", "Mango"]
- 
-};
- 
-// 21. Print the student name
- 
-console.log("Student Name:", student.name);
- 
-// 22. Add a new property (college) dynamically
- 
-student.college = "Shri Sakthi Kailaash Women's college";
- 
-console.log("After Adding College:", student);
- 
-// 23. Access nested array inside object
- 
-console.log("First Fruit:", student.fruits[0]);
- 
-console.log("All Fruits:", student.fruits);
- 
-// 24. Update a property value
- 
-student.age = 28;
- 
-console.log("Updated Age:", student.age);
- 
-//Section 6:Operators
- 
-// Declare two numbers
- 
-let a = 10;
- 
-let b = 15;
- 
-// 25. Add two numbers and print result
- 
-console.log("Addition:", a + b);
- 
-// 26. Subtract two numbers
- 
-console.log("Subtraction:", a - b);
- 
-// 27. Multiply two numbers
- 
-console.log("Multiplication:", a * b);
- 
-// 28. Divide two numbers
- 
-console.log("Division:", a / b);
- 
-// 29. Find remainder using %
- 
-console.log("Remainder:", a % b);
- 
-// 30. Use exponent operator (power)
- 
-console.log("Power:", a ** b);
- 
-//Section 7:Increment & Decrement
- 
-// 31. Post Increment
- 
-let num1 = 5;
- 
-console.log("Post Increment:", num1++); // prints 5, then increases
- 
-console.log("After Post Increment:", num1); // 6
- 
-// 32. Pre Increment
- 
-let num2 = 5;
- 
-console.log("Pre Increment:", ++num2); // increases first, then prints (6)
- 
-// 33. Difference between num++ and ++num
- 
-let x = 10;
- 
-console.log("num++:", x++); // 10 (then becomes 11)
- 
-console.log("Value after num++:", x); // 11
- 
-let y = 10;
- 
-console.log("++num:", ++y); // 11 (increments first)
- 
-// 34. Decrement Operator
- 
-let num3 = 8;
- 
-console.log("Post Decrement:", num3--); // 8 (then becomes 7)
- 
-console.log("After Post Decrement:", num3); // 7
- 
-let num4 = 8;
- 
-console.log("Pre Decrement:", --num4); // 7
- 
-// 35. Predict Output
- 
-let d = 5;
- 
-let e = d++; // e = 5, d becomes 6
- 
-let f = ++d; // d becomes 7, f = 7
- 
-console.log("a:",a); // 7
- 
-console.log("b:",b); // 5
- 
-console.log("c:",c); // 7
- 
-// Section 8: Real-Time Logic Tasks
- 
-// 36. Ask user age and check if eligible to vote
- 
-let userage = prompt("Enter your age:");
- 
-if (age >= 18) {
- 
-console.log("You are eligible to vote");
- 
-} else {
- 
-console.log("You are not eligible to vote");
- 
+// Task -1  E-Commerce Discount System
+
+// Concepts: function, parameters, return, condition
+
+function calculateDiscount(productName,price) {
+    let finalPrice;
+
+    if(price >  1000){
+        finalPrice = price - (price * 20 / 100);
+    }else{
+        finalPrice = price - (price * 10 / 100);
+    }
+    return Product: ${productName}\nFinal Price: ${finalPrice};
 }
- 
-// 37. Ask user name and greet
- 
-let userName = prompt("Enter your name:");
- 
-console.log("Hello " + userName);
- 
-// 38. Store marks in array and print highest value
- 
-let marks = [85, 92, 78, 96, 88];
- 
-let highest = Math.max(...marks);
- 
-console.log("Marks:", marks);
- 
-console.log("Highest Marks:", highest);
- 
-// 39. Create object for fruits category and access values
- 
-let fruitsCategory = {
- 
-tropical: ["Mango", "Pineapple"],
- 
-citrus: ["Orange", "Lemon"],
- 
-berries: ["Strawberry", "Blueberry"]
- 
-};
- 
-console.log("Tropical Fruits:", fruitsCategory.tropical);
- 
-console.log("First Citrus Fruit:", fruitsCategory.citrus[0]);
- 
-// 40. Combine prompt + array
- 
-let favFruits = [];
- 
-favFruits.push(prompt("Enter your 1st favorite fruit:"));
- 
-favFruits.push(prompt("Enter your 2nd favorite fruit:"));
- 
-favFruits.push(prompt("Enter your 3rd favorite fruit:"));
- 
-console.log("Your Favorite Fruits:", favFruits);
+
+console.log(calculateDiscount("Shoe", 2000));
+
+// Task -2 Order Processing using Callback
+
+// Concepts: callback, higher order function
+
+function payment(amount){
+    console.log(Payment of ${amount} successfull.);
+}
+
+function orderSucess(){
+    console.log("Order Delivered");
+}
+
+function placeOrder(callback){
+    console.log("Order Placed");
+    payment(500);
+    callback();
+}
+
+placeOrder(orderSucess);
+
+// Task - 3 Employee Data Loop System
+
+// Concepts: loop, array, object
+
+let employees = [
+    {name:"Priya", salary: 90000},
+    {name:"Gowtham", salary: 80000},
+];
+
+for(let i = 0; i < employees.length; i++){
+    let employee = employees[i];
+
+
+    if(employee.salary > 60000){
+        console.log(employee.name + " High salary");
+    }else{
+        console.log(employee.name + " Low salary");
+    }
+}
+
+// Task - 4 Login Attempts(While Loop)
+
+// concepts: while loop
+
+const correctPass = '1234';
+
+let attempts = 0;
+let maxAttempts = 3;
+let password;
+
+while(attempts < maxAttempts){
+    attempts++;
+    console.log("Attempt "+ attempts);
+
+    //password = prompt("Enter your password: ");
+
+    if(password === correctPass){
+        console.log("Login Success.");
+        break;
+    }
+}
+if(password !== correctPass){
+    console.log("Login failed. Max attempts reached.");
+}
+
+// Task 5: Coupon Generator (Generator Function)
+
+// Concepts: generator
+
+function* couponGenerator() {
+    yield "10% OFF";
+    yield "20% OFF";
+    yield "Free Delivery";
+    yield "Cashback";
+}
+const coupons = couponGenerator();
+console.log(coupons.next().value);
+console.log(coupons.next().value);
+console.log(coupons.next().value);
+console.log(coupons.next().value);
+
+//  Task 6: Shopping Cart Total (for...of)
+
+// Concepts: for...of
+
+let cart = [100,200,300,400];
+
+let total = 0;
+
+for(let price of cart){
+    total += price;
+}
+
+console.log("Final amount: " + total);
+
+// Task 7: User Profile System (for...in)
+
+// Concepts: for...in
+let userProfile = {
+    name: "Priyadharsini",
+    role: "Developer",
+    location: "India"
+}
+for(let key in userProfile){
+    console.log(key + ": " + userProfile[key]);
+}
+
+// Task 8: Factory Pattern (Function Reuse)
+
+// Concepts: return, reuse
+
+function createPhone(){
+    return "Phone";
+}
+function createBattery(){
+    return "Battery";
+}
+
+function createCharger(){
+    return "Charger";
+}
+let order = createPhone() + " + " + createBattery() + " + " + createCharger();
+console.log("Your Order: " + order); 
+
+// Task 9: College Form with Default Values
+
+// Concepts: default parameters
+
+function collegeForm(name,age,department = "Not Assigned"){
+    console.log(Name: ${name}, Age: ${age}, Department: ${department});
+}
+collegeForm("Priya", 28, "Microbiology");
+collegeForm("Gowtham", 29);
+
+// Task 10: Currying - EMI Calculator
+
+// Concepts: currying
+
+function emi(principal){
+    return function(rate){
+        return function(time){
+            return (principal * rate * time) / 100;
+        }
+    }
+}
+
+let result = emi(10000)(10)(2);
+console.log("EMI Amount: " + result);
+
+// Task 11: Even / Odd Analyzer
+
+// Concepts: condition, loop
+
+let num = 10;
+
+for(let i = 1; i <= num; i++){
+    if(i % 2 === 0){
+        console.log(i + " is Even");
+    }else{
+        console.log(i + " is Odd");
+    }
+}   
+
+// Task 12: Function Scope Debugging
+
+// Concepts: var, let, const
+
+if(true){
+    var a = 10; // it work because var is function scope/global scope
+    let b = 20; // it will not work because let is block scope
+    const c = 30; // it will not work because const is block scope
+}
+console.log(a); // 10
+//console.log(b); // ReferenceError
+//console.log(c); // ReferenceError
+
+// Task 13: Real-Time Alert System (IIFE)
+
+// Concepts: IIFE
+
+(function announcument(){
+    alert("Flash Sale: 50% OFF on Shirts");
+})()
+
+//Task 14: Marks Calculator with Return
+
+// Concepts: return
+
+function calculateMarks(marks){
+
+    let total = 0;
+    let average = 0;
+    for(let mark of marks){
+        total += mark;
+    }
+    average = total / marks.length;
+    return { total, average };
+
+}   
+let marks = [80, 90, 70];
+let totalMarks = calculateMarks(marks);
+console.log("Total Marks: " + totalMarks.total);
+console.log("Average Marks: " + totalMarks.average);
+
+// Task 15: Retry Offer System (Generator + Condition)
+
+// Concepts: generator, done
+
+function* retryOffer(){
+    yield "10% OFF";
+    yield "20% OFF";
+    yield "30% OFF";
+}   
+
+let offer = retryOffer();
+console.log(offer.next().value); // 10% OFF
+console.log(offer.next().value); // 20% OFF
+console.log(offer.next().value); // 30% OFF
+if(offer.next().done){
+    console.log("All Offers Expired.");
+}
