@@ -1,238 +1,262 @@
-// Task -1  E-Commerce Discount System
+ // Task 1: E-commerce Cart System
+ 
+// Concepts: spread, array methods, object manipulation
+ 
+let cart1 = [
 
-// Concepts: function, parameters, return, condition
+    {name: "Shirt", price:600},
 
-function calculateDiscount(productName,price) {
-    let finalPrice;
+    {name: "Shoe", price: 1800},
 
-    if(price >  1000){
-        finalPrice = price - (price * 20 / 100);
-    }else{
-        finalPrice = price - (price * 10 / 100);
-    }
-    return Product: ${productName}\nFinal Price: ${finalPrice};
+]
+ 
+let cart2 = [
+
+    {name: "Watch", price: 2000},
+
+]
+ 
+let finalCart = [...cart1, ...cart2];
+
+console.log(finalCart);
+ 
+finalCart.push({name: "Bag", price: 800});
+
+console.log(finalCart);
+ 
+finalCart.pop();
+
+console.log(finalCart);
+ 
+let totalPrice = finalCart.reduce((total, item) => total + item.price, 0);
+
+console.log("Total Price: " + totalPrice);
+ 
+// Task 2: User Profile Management
+ 
+// Concepts: object spread, destructuring
+ 
+let user = {
+
+    name : "Priya",
+
+    role : "Trainee",
+
+    salary : 15000
+
 }
 
-console.log(calculateDiscount("Shoe", 2000));
+let updateUser = {
 
-// Task -2 Order Processing using Callback
+    role : "Developer",
 
-// Concepts: callback, higher order function
+    salary : 25000
 
-function payment(amount){
-    console.log(Payment of ${amount} successfull.);
 }
+ 
+let updatedUser = {...user, ...updateUser};
 
-function orderSucess(){
-    console.log("Order Delivered");
+console.log(updatedUser);
+ 
+let {name, role, salary} = updatedUser;
+
+console.log(`${name} is now a ${role} earning ${salary}.`);
+ 
+// Task 3: Function with Rest Operator (Team Score System)
+
+// Concepts: rest operator
+ 
+function teamScore(teamName,...scores) {
+
+    console.log("Team:" + teamName);
+
+    console.log("Scores:" + scores);
+ 
+    let totalScore = scores.reduce((total, score) => total + score, 0);
+
+    console.log("Total Score:" + totalScore);
+ 
+    let highestScore = Math.max(...scores);
+
+    console.log("Highest Score:" + highestScore);
+
 }
+ 
+teamScore("SHK", 200, 150, 180);
+ 
+// Task 4: Nested Data Extraction (API Response Simulation)
 
-function placeOrder(callback){
-    console.log("Order Placed");
-    payment(500);
-    callback();
-}
+// Concepts: nested destructuring
+ 
+let apiData = {
 
-placeOrder(orderSucess);
+    user: {
 
-// Task - 3 Employee Data Loop System
+        name : "Priya",
 
-// Concepts: loop, array, object
+        address: {
 
-let employees = [
-    {name:"Priya", salary: 90000},
-    {name:"Gowtham", salary: 80000},
-];
+            city: "Salem",
 
-for(let i = 0; i < employees.length; i++){
-    let employee = employees[i];
+            pincode: 636455
 
-
-    if(employee.salary > 60000){
-        console.log(employee.name + " High salary");
-    }else{
-        console.log(employee.name + " Low salary");
-    }
-}
-
-// Task - 4 Login Attempts(While Loop)
-
-// concepts: while loop
-
-const correctPass = '1234';
-
-let attempts = 0;
-let maxAttempts = 3;
-let password;
-
-while(attempts < maxAttempts){
-    attempts++;
-    console.log("Attempt "+ attempts);
-
-    //password = prompt("Enter your password: ");
-
-    if(password === correctPass){
-        console.log("Login Success.");
-        break;
-    }
-}
-if(password !== correctPass){
-    console.log("Login failed. Max attempts reached.");
-}
-
-// Task 5: Coupon Generator (Generator Function)
-
-// Concepts: generator
-
-function* couponGenerator() {
-    yield "10% OFF";
-    yield "20% OFF";
-    yield "Free Delivery";
-    yield "Cashback";
-}
-const coupons = couponGenerator();
-console.log(coupons.next().value);
-console.log(coupons.next().value);
-console.log(coupons.next().value);
-console.log(coupons.next().value);
-
-//  Task 6: Shopping Cart Total (for...of)
-
-// Concepts: for...of
-
-let cart = [100,200,300,400];
-
-let total = 0;
-
-for(let price of cart){
-    total += price;
-}
-
-console.log("Final amount: " + total);
-
-// Task 7: User Profile System (for...in)
-
-// Concepts: for...in
-let userProfile = {
-    name: "Priyadharsini",
-    role: "Developer",
-    location: "India"
-}
-for(let key in userProfile){
-    console.log(key + ": " + userProfile[key]);
-}
-
-// Task 8: Factory Pattern (Function Reuse)
-
-// Concepts: return, reuse
-
-function createPhone(){
-    return "Phone";
-}
-function createBattery(){
-    return "Battery";
-}
-
-function createCharger(){
-    return "Charger";
-}
-let order = createPhone() + " + " + createBattery() + " + " + createCharger();
-console.log("Your Order: " + order); 
-
-// Task 9: College Form with Default Values
-
-// Concepts: default parameters
-
-function collegeForm(name,age,department = "Not Assigned"){
-    console.log(Name: ${name}, Age: ${age}, Department: ${department});
-}
-collegeForm("Priya", 28, "Microbiology");
-collegeForm("Gowtham", 29);
-
-// Task 10: Currying - EMI Calculator
-
-// Concepts: currying
-
-function emi(principal){
-    return function(rate){
-        return function(time){
-            return (principal * rate * time) / 100;
         }
+
     }
+
 }
 
-let result = emi(10000)(10)(2);
-console.log("EMI Amount: " + result);
+let {
 
-// Task 11: Even / Odd Analyzer
+    user: {
 
-// Concepts: condition, loop
+        name : userName,
 
-let num = 10;
+        address: {
 
-for(let i = 1; i <= num; i++){
-    if(i % 2 === 0){
-        console.log(i + " is Even");
-    }else{
-        console.log(i + " is Odd");
+            city,
+
+            pincode
+
+        }
+
     }
-}   
 
-// Task 12: Function Scope Debugging
+} = apiData;
+ 
+console.log(`${userName} lives in ${city} - ${pincode}.`);
+ 
+//Task 5: Array Dashboard (Admin Panel)
 
-// Concepts: var, let, const
+//Concepts: splice, slice, includes, indexOf
+ 
+let users = ["A", "B", "C", "D", "E"];
+ 
+// Remove "C" and "D" using splice
 
-if(true){
-    var a = 10; // it work because var is function scope/global scope
-    let b = 20; // it will not work because let is block scope
-    const c = 30; // it will not work because const is block scope
+users.splice(2, 2);
+
+console.log(users);
+ 
+//Add "X", "Y" in same place
+
+users.splice(2, 0, "X", "Y");
+
+console.log(users);
+ 
+//Get only first 3 users using slice
+
+let firstThreeUsers = users.slice(0, 3);
+
+console.log(firstThreeUsers);
+ 
+//Check if "B" exists
+
+let hasB = users.includes("B");
+
+console.log("Contains B: " + hasB);
+ 
+//Find index of "E"
+
+let indexOfE = users.indexOf("E");
+
+console.log("Index of E: " + indexOfE);
+ 
+// Task 6: Data Cleaning Tool
+
+//Concepts: flat, filter, type handling
+ 
+let messyData = [1, 2, [3, 4, [5]], null, undefined, "hello"]
+ 
+// Flatten the array
+
+let flattenedData = messyData.flat(Infinity);
+
+console.log(flattenedData);
+ 
+//Remove null and undefined
+
+let cleanedData = flattenedData.filter(item => item !== null && item !== undefined);
+
+console.log(cleanedData);
+ 
+//Output clean array
+
+console.log("Cleaned Data: " + cleanedData);
+ 
+//Task 7: Sorting Bug Fix 
+
+//Concepts: sort()
+ 
+let prices = [1000, 200, 50, 5000]
+ 
+//Sort correctly in ascending order
+
+prices.sort((a, b) => a - b); // the default sort fails beacause it sorts elements as strings, not numbers
+
+console.log("Sorted Prices: " + prices);
+ 
+//Task 8: Analytics Report Generator
+
+// Concepts: reduce
+ 
+let order = [
+
+    {id: 1,amount: 100},
+
+    {id: 2,amount: 200},
+
+    {id: 3,amount: 300}
+
+]
+ 
+let totalAmount = order.reduce((total, item ) => total + item.amount, 0);
+
+console.log("Total Order Amount: " + totalAmount);
+ 
+let avgAmount = totalAmount / order.length;
+
+console.log("Average Order Amount: " + avgAmount);
+ 
+//Task 9: Inventory System (Advanced)
+
+//Concepts: combine everything
+ 
+let inventory1 = ["Laptop", "Phone", "Tablet"];
+
+let inventory2 = ["Monitor", "Keyboard", "Mouse"];
+ 
+inventory2.push("Headphones");
+
+console.log(inventory2);
+ 
+inventory1.pop();
+
+console.log(inventory1);
+ 
+inventory2.splice(2, 1, "Smartphone");
+
+console.log(inventory2);
+ 
+console.log("Laptop in inventory1: " + inventory1.includes("Laptop"));
+ 
+let combinedInventory = [...inventory1, ...inventory2];
+
+console.log("Combined Inventory: " + combinedInventory);
+ 
+// Task 10: Interview Level Challenge
+ 
+function processData(...data) {
+
+    let flatData = data.flat(Infinity);
+
+    let uniqueData = [...new Set(flatData)];
+
+    uniqueData.sort((a, b) => a - b);
+
+    return uniqueData;
+
 }
-console.log(a); // 10
-//console.log(b); // ReferenceError
-//console.log(c); // ReferenceError
-
-// Task 13: Real-Time Alert System (IIFE)
-
-// Concepts: IIFE
-
-(function announcument(){
-    alert("Flash Sale: 50% OFF on Shirts");
-})()
-
-//Task 14: Marks Calculator with Return
-
-// Concepts: return
-
-function calculateMarks(marks){
-
-    let total = 0;
-    let average = 0;
-    for(let mark of marks){
-        total += mark;
-    }
-    average = total / marks.length;
-    return { total, average };
-
-}   
-let marks = [80, 90, 70];
-let totalMarks = calculateMarks(marks);
-console.log("Total Marks: " + totalMarks.total);
-console.log("Average Marks: " + totalMarks.average);
-
-// Task 15: Retry Offer System (Generator + Condition)
-
-// Concepts: generator, done
-
-function* retryOffer(){
-    yield "10% OFF";
-    yield "20% OFF";
-    yield "30% OFF";
-}   
-
-let offer = retryOffer();
-console.log(offer.next().value); // 10% OFF
-console.log(offer.next().value); // 20% OFF
-console.log(offer.next().value); // 30% OFF
-if(offer.next().done){
-    console.log("All Offers Expired.");
-}
+ 
+console.log(processData(1,2,[3,4],[5,[6]]))
+ 
