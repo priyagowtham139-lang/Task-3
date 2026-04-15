@@ -1,9 +1,9 @@
  // Task 1: E-commerce Cart Total
 
 let cart = [
-    {name: "Kurta", price: 500, qty: 2},
-    {name: "Lehanga", price: 1500, qty: 1},
-    {name: "Headband", price: 300, qty: 3}
+    {name: "Earings", price: 500, qty: 2},
+    {name: "Chokers", price: 1500, qty: 1},
+    {name: "Bracelets", price: 300, qty: 3}
 ];
 
 // Calculate total price using reduce
@@ -27,10 +27,10 @@ console.log("Product Names in Uppercase: ", productNames);
 // Task 2: Student Result System
 
 let students = [
-    {name: "Mouthi", marks: 85},
-    {name: "Kala", marks: 45},
-    {name: "Sai", marks: 60},
-    {name: "Vidya", marks: 30}
+    {name: "Naveen", marks: 85},
+    {name: "Meena", marks: 45},
+    {name: "yuga", marks: 60},
+    {name: "Gowtham", marks: 30}
 ]
 
 // Find failed students (marks < 50)
@@ -119,7 +119,7 @@ console.log("Products as string: " + productString);
 
 // Take DOB (hardcode or prompt)
 
-let dob = new Date("1995-07-27");
+let dob = new Date("1997-08-07");
 let today = new Date();
 //Calculate current age
 let age = today.getFullYear() - dob.getFullYear();
