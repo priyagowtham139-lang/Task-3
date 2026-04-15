@@ -1,262 +1,199 @@
- // Task 1: E-commerce Cart System
- 
-// Concepts: spread, array methods, object manipulation
- 
-let cart1 = [
+ // Task 1: E-commerce Cart Total
 
-    {name: "Shirt", price:600},
+let cart = [
+    {name: "Kurta", price: 500, qty: 2},
+    {name: "Lehanga", price: 1500, qty: 1},
+    {name: "Headband", price: 300, qty: 3}
+];
 
-    {name: "Shoe", price: 1800},
+// Calculate total price using reduce
 
+let totalPrice = cart.reduce((total, item) => {
+    return total + (item.price * item.qty);
+}, 0);
+
+console.log("Total Cart Price: " + totalPrice);
+
+// Print only products above 1000 price using filter
+
+let expensiveItems = cart.filter(item => item.price > 1000);
+console.log("Expensive Items: ", expensiveItems);
+
+// Get all product names in uppercase using map
+
+let productNames = cart.map(item => item.name.toUpperCase());
+console.log("Product Names in Uppercase: ", productNames);
+
+// Task 2: Student Result System
+
+let students = [
+    {name: "Mouthi", marks: 85},
+    {name: "Kala", marks: 45},
+    {name: "Sai", marks: 60},
+    {name: "Vidya", marks: 30}
 ]
- 
-let cart2 = [
 
-    {name: "Watch", price: 2000},
+// Find failed students (marks < 50)
 
+let failedStudents = students.filter(student => student.marks < 50);
+console.log("Failed Students: ", failedStudents);
+
+// Check if any student got distinction (>80) using some
+
+let hasDistinction = students.some(student => student.marks > 80);
+console.log("Any student got distinction? " + hasDistinction);
+
+// Check if all students passed (>35) using every
+
+let allPassed = students.every(student => student.marks > 35);
+console.log("Did all students pass? " + allPassed);
+
+// Find first student who failed using find
+
+let firstFailedStudent = students.find(student => student.marks < 50);
+console.log("First Failed Student: ", firstFailedStudent);
+
+// Task 3: Employee Salary Analysis
+
+let employees = [
+    {name: "A", salary: 35000},
+    {name: "B", salary: 40000},
+    {name: "C", salary: 25000},
+    {name: "D", salary: 40000}
 ]
- 
-let finalCart = [...cart1, ...cart2];
 
-console.log(finalCart);
- 
-finalCart.push({name: "Bag", price: 800});
+// Increase salary by 10% using map
 
-console.log(finalCart);
- 
-finalCart.pop();
-
-console.log(finalCart);
- 
-let totalPrice = finalCart.reduce((total, item) => total + item.price, 0);
-
-console.log("Total Price: " + totalPrice);
- 
-// Task 2: User Profile Management
- 
-// Concepts: object spread, destructuring
- 
-let user = {
-
-    name : "Priya",
-
-    role : "Trainee",
-
-    salary : 15000
-
-}
-
-let updateUser = {
-
-    role : "Developer",
-
-    salary : 25000
-
-}
- 
-let updatedUser = {...user, ...updateUser};
-
-console.log(updatedUser);
- 
-let {name, role, salary} = updatedUser;
-
-console.log(`${name} is now a ${role} earning ${salary}.`);
- 
-// Task 3: Function with Rest Operator (Team Score System)
-
-// Concepts: rest operator
- 
-function teamScore(teamName,...scores) {
-
-    console.log("Team:" + teamName);
-
-    console.log("Scores:" + scores);
- 
-    let totalScore = scores.reduce((total, score) => total + score, 0);
-
-    console.log("Total Score:" + totalScore);
- 
-    let highestScore = Math.max(...scores);
-
-    console.log("Highest Score:" + highestScore);
-
-}
- 
-teamScore("SHK", 200, 150, 180);
- 
-// Task 4: Nested Data Extraction (API Response Simulation)
-
-// Concepts: nested destructuring
- 
-let apiData = {
-
-    user: {
-
-        name : "Priya",
-
-        address: {
-
-            city: "Salem",
-
-            pincode: 636455
-
-        }
-
+let updatedSalaries = employees.map(employee => {
+    return {
+        name: employee.name,
+        salary: employee.salary * 1.10
     }
+});
 
+console.log("Updated Salaries: ", updatedSalaries);
+
+// Get employees with salary > 30000
+
+let highEarners = employees.filter(employee => employee.salary > 30000);
+console.log("High Earners: ", highEarners);
+
+// Calculate total salary expense
+
+let totalSalaryExpense = employees.reduce((total, employee) => {
+    return total + employee.salary;
+}, 0);
+
+console.log("Total Salary Expense: " + totalSalaryExpense);
+
+// Sort employees by highest salary
+
+let sortedEmployees = employees.sort((a, b) => b.salary - a.salary);
+console.log("Employees sorted by salary: ", sortedEmployees);   
+
+// Task 4: String Real Use Case (Search System)
+
+let products = ["Laptop", "Mobile", "Tablet", "Camera"]
+
+// Check if "Mobile" exists using includes
+
+let hasMobile = products.includes("Mobile");
+console.log("Is Mobile available? " + hasMobile);
+
+// Convert all to lowercase
+
+let lowerCaseProducts = products.map(product => product.toLowerCase());
+console.log("Products in lowercase: ", lowerCaseProducts);
+
+//Find index of "Tablet"
+
+let tabletIndex = products.indexOf("Tablet");
+console.log("Index of Tablet: " + tabletIndex);
+
+// Convert array to string using join("-")
+
+let productString = products.join("-");
+console.log("Products as string: " + productString);
+
+// Task 5: Date Real-Time Task (Age Calculator)
+
+// Take DOB (hardcode or prompt)
+
+let dob = new Date("1995-07-27");
+let today = new Date();
+//Calculate current age
+let age = today.getFullYear() - dob.getFullYear();
+let monthDiff = today.getMonth() - dob.getMonth();
+if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+    age--;
 }
+console.log(You are ${age} years old);
 
-let {
+// Task 6: Login Validation System
 
-    user: {
-
-        name : userName,
-
-        address: {
-
-            city,
-
-            pincode
-
-        }
-
-    }
-
-} = apiData;
- 
-console.log(`${userName} lives in ${city} - ${pincode}.`);
- 
-//Task 5: Array Dashboard (Admin Panel)
-
-//Concepts: splice, slice, includes, indexOf
- 
-let users = ["A", "B", "C", "D", "E"];
- 
-// Remove "C" and "D" using splice
-
-users.splice(2, 2);
-
-console.log(users);
- 
-//Add "X", "Y" in same place
-
-users.splice(2, 0, "X", "Y");
-
-console.log(users);
- 
-//Get only first 3 users using slice
-
-let firstThreeUsers = users.slice(0, 3);
-
-console.log(firstThreeUsers);
- 
-//Check if "B" exists
-
-let hasB = users.includes("B");
-
-console.log("Contains B: " + hasB);
- 
-//Find index of "E"
-
-let indexOfE = users.indexOf("E");
-
-console.log("Index of E: " + indexOfE);
- 
-// Task 6: Data Cleaning Tool
-
-//Concepts: flat, filter, type handling
- 
-let messyData = [1, 2, [3, 4, [5]], null, undefined, "hello"]
- 
-// Flatten the array
-
-let flattenedData = messyData.flat(Infinity);
-
-console.log(flattenedData);
- 
-//Remove null and undefined
-
-let cleanedData = flattenedData.filter(item => item !== null && item !== undefined);
-
-console.log(cleanedData);
- 
-//Output clean array
-
-console.log("Cleaned Data: " + cleanedData);
- 
-//Task 7: Sorting Bug Fix 
-
-//Concepts: sort()
- 
-let prices = [1000, 200, 50, 5000]
- 
-//Sort correctly in ascending order
-
-prices.sort((a, b) => a - b); // the default sort fails beacause it sorts elements as strings, not numbers
-
-console.log("Sorted Prices: " + prices);
- 
-//Task 8: Analytics Report Generator
-
-// Concepts: reduce
- 
-let order = [
-
-    {id: 1,amount: 100},
-
-    {id: 2,amount: 200},
-
-    {id: 3,amount: 300}
-
+let users = [
+    {username: "admin", password: "1234"},
+    {username: "user", password: "abcd"}
 ]
- 
-let totalAmount = order.reduce((total, item ) => total + item.amount, 0);
 
-console.log("Total Order Amount: " + totalAmount);
- 
-let avgAmount = totalAmount / order.length;
+//Check if user exists using find
 
-console.log("Average Order Amount: " + avgAmount);
- 
-//Task 9: Inventory System (Advanced)
-
-//Concepts: combine everything
- 
-let inventory1 = ["Laptop", "Phone", "Tablet"];
-
-let inventory2 = ["Monitor", "Keyboard", "Mouse"];
- 
-inventory2.push("Headphones");
-
-console.log(inventory2);
- 
-inventory1.pop();
-
-console.log(inventory1);
- 
-inventory2.splice(2, 1, "Smartphone");
-
-console.log(inventory2);
- 
-console.log("Laptop in inventory1: " + inventory1.includes("Laptop"));
- 
-let combinedInventory = [...inventory1, ...inventory2];
-
-console.log("Combined Inventory: " + combinedInventory);
- 
-// Task 10: Interview Level Challenge
- 
-function processData(...data) {
-
-    let flatData = data.flat(Infinity);
-
-    let uniqueData = [...new Set(flatData)];
-
-    uniqueData.sort((a, b) => a - b);
-
-    return uniqueData;
-
+function validateLogin(username, password) {
+    let user = users.find(user => user.username === username && user.password === password);
+    if (user) {
+        console.log("Login successful!");
+    } else {
+        console.log("Invalid credentials.");
+    }
 }
- 
-console.log(processData(1,2,[3,4],[5,[6]]))
- 
+validateLogin("admin", "1234"); // Valid
+validateLogin("user", "wrong"); // Invalid
+
+// Task 7: Even Number Analyzer
+
+let numbers = [10, 15, 20, 25, 30]
+
+// Get all even numbers
+let evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log("Even Numbers: ", evenNumbers);
+
+// Check if any odd number exists
+let hasOdd = numbers.some(num => num % 2 !== 0);
+console.log("Any odd number exists? " + hasOdd);
+
+//Check if all numbers are even
+let allEven = numbers.every(num => num % 2 === 0);
+console.log("Are all numbers even? " + allEven);
+
+//Find first number > 20
+let firstGreaterThan20 = numbers.find(num => num > 20);
+console.log("First number greater than 20: " + firstGreaterThan20);
+
+// Task 8: 
+
+let orders = [
+    {id: 1, amount: 500, status: "delivered"},
+    {id: 2, amount: 1500, status: "pending"},
+    {id: 3, amount: 2000, status: "delivered"}
+]
+
+// Total revenue of delivered orders
+let totalRevenue = orders.reduce((total, order) => {
+    if (order.status === "delivered") {
+        return total + order.amount;
+    }
+    return total;
+}, 0);
+console.log("Total Revenue from Delivered Orders: " + totalRevenue);
+
+// Get all pending orders
+let pendingOrders = orders.filter(order => order.status === "pending");
+console.log("Pending Orders: ", pendingOrders);
+
+// Check if any order > 1000
+let hasHighValueOrder = orders.some(order => order.amount > 1000);
+console.log("Any order greater than 1000? " + hasHighValueOrder);
+
+//Sort orders by amount (ascending)
+let sortedOrders = orders.sort((a, b) => a.amount - b.amount);
+console.log("Orders sorted by amount: ", sortedOrders);
