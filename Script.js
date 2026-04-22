@@ -1,238 +1,199 @@
-// Task -1  E-Commerce Discount System
+ // Task 1: E-commerce Cart Total
 
-// Concepts: function, parameters, return, condition
-
-function calculateDiscount(productName,price) {
-    let finalPrice;
-
-    if(price >  1000){
-        finalPrice = price - (price * 20 / 100);
-    }else{
-        finalPrice = price - (price * 10 / 100);
-    }
-    return Product: ${productName}\nFinal Price: ${finalPrice};
-}
-
-console.log(calculateDiscount("Shoe", 2000));
-
-// Task -2 Order Processing using Callback
-
-// Concepts: callback, higher order function
-
-function payment(amount){
-    console.log(Payment of ${amount} successfull.);
-}
-
-function orderSucess(){
-    console.log("Order Delivered");
-}
-
-function placeOrder(callback){
-    console.log("Order Placed");
-    payment(500);
-    callback();
-}
-
-placeOrder(orderSucess);
-
-// Task - 3 Employee Data Loop System
-
-// Concepts: loop, array, object
-
-let employees = [
-    {name:"Priya", salary: 90000},
-    {name:"Gowtham", salary: 80000},
+let cart = [
+    {name: "Earings", price: 500, qty: 2},
+    {name: "Chokers", price: 1500, qty: 1},
+    {name: "Bracelets", price: 300, qty: 3}
 ];
 
-for(let i = 0; i < employees.length; i++){
-    let employee = employees[i];
+// Calculate total price using reduce
 
+let totalPrice = cart.reduce((total, item) => {
+    return total + (item.price * item.qty);
+}, 0);
 
-    if(employee.salary > 60000){
-        console.log(employee.name + " High salary");
-    }else{
-        console.log(employee.name + " Low salary");
+console.log("Total Cart Price: " + totalPrice);
+
+// Print only products above 1000 price using filter
+
+let expensiveItems = cart.filter(item => item.price > 1000);
+console.log("Expensive Items: ", expensiveItems);
+
+// Get all product names in uppercase using map
+
+let productNames = cart.map(item => item.name.toUpperCase());
+console.log("Product Names in Uppercase: ", productNames);
+
+// Task 2: Student Result System
+
+let students = [
+    {name: "Naveen", marks: 85},
+    {name: "Meena", marks: 45},
+    {name: "yuga", marks: 60},
+    {name: "Gowtham", marks: 30}
+]
+
+// Find failed students (marks < 50)
+
+let failedStudents = students.filter(student => student.marks < 50);
+console.log("Failed Students: ", failedStudents);
+
+// Check if any student got distinction (>80) using some
+
+let hasDistinction = students.some(student => student.marks > 80);
+console.log("Any student got distinction? " + hasDistinction);
+
+// Check if all students passed (>35) using every
+
+let allPassed = students.every(student => student.marks > 35);
+console.log("Did all students pass? " + allPassed);
+
+// Find first student who failed using find
+
+let firstFailedStudent = students.find(student => student.marks < 50);
+console.log("First Failed Student: ", firstFailedStudent);
+
+// Task 3: Employee Salary Analysis
+
+let employees = [
+    {name: "A", salary: 35000},
+    {name: "B", salary: 40000},
+    {name: "C", salary: 25000},
+    {name: "D", salary: 40000}
+]
+
+// Increase salary by 10% using map
+
+let updatedSalaries = employees.map(employee => {
+    return {
+        name: employee.name,
+        salary: employee.salary * 1.10
+    }
+});
+
+console.log("Updated Salaries: ", updatedSalaries);
+
+// Get employees with salary > 30000
+
+let highEarners = employees.filter(employee => employee.salary > 30000);
+console.log("High Earners: ", highEarners);
+
+// Calculate total salary expense
+
+let totalSalaryExpense = employees.reduce((total, employee) => {
+    return total + employee.salary;
+}, 0);
+
+console.log("Total Salary Expense: " + totalSalaryExpense);
+
+// Sort employees by highest salary
+
+let sortedEmployees = employees.sort((a, b) => b.salary - a.salary);
+console.log("Employees sorted by salary: ", sortedEmployees);   
+
+// Task 4: String Real Use Case (Search System)
+
+let products = ["Laptop", "Mobile", "Tablet", "Camera"]
+
+// Check if "Mobile" exists using includes
+
+let hasMobile = products.includes("Mobile");
+console.log("Is Mobile available? " + hasMobile);
+
+// Convert all to lowercase
+
+let lowerCaseProducts = products.map(product => product.toLowerCase());
+console.log("Products in lowercase: ", lowerCaseProducts);
+
+//Find index of "Tablet"
+
+let tabletIndex = products.indexOf("Tablet");
+console.log("Index of Tablet: " + tabletIndex);
+
+// Convert array to string using join("-")
+
+let productString = products.join("-");
+console.log("Products as string: " + productString);
+
+// Task 5: Date Real-Time Task (Age Calculator)
+
+// Take DOB (hardcode or prompt)
+
+let dob = new Date("1997-08-07");
+let today = new Date();
+//Calculate current age
+let age = today.getFullYear() - dob.getFullYear();
+let monthDiff = today.getMonth() - dob.getMonth();
+if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+    age--;
+}
+console.log(You are ${age} years old);
+
+// Task 6: Login Validation System
+
+let users = [
+    {username: "admin", password: "1234"},
+    {username: "user", password: "abcd"}
+]
+
+//Check if user exists using find
+
+function validateLogin(username, password) {
+    let user = users.find(user => user.username === username && user.password === password);
+    if (user) {
+        console.log("Login successful!");
+    } else {
+        console.log("Invalid credentials.");
     }
 }
+validateLogin("admin", "1234"); // Valid
+validateLogin("user", "wrong"); // Invalid
 
-// Task - 4 Login Attempts(While Loop)
+// Task 7: Even Number Analyzer
 
-// concepts: while loop
+let numbers = [10, 15, 20, 25, 30]
 
-const correctPass = '1234';
+// Get all even numbers
+let evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log("Even Numbers: ", evenNumbers);
 
-let attempts = 0;
-let maxAttempts = 3;
-let password;
+// Check if any odd number exists
+let hasOdd = numbers.some(num => num % 2 !== 0);
+console.log("Any odd number exists? " + hasOdd);
 
-while(attempts < maxAttempts){
-    attempts++;
-    console.log("Attempt "+ attempts);
+//Check if all numbers are even
+let allEven = numbers.every(num => num % 2 === 0);
+console.log("Are all numbers even? " + allEven);
 
-    //password = prompt("Enter your password: ");
+//Find first number > 20
+let firstGreaterThan20 = numbers.find(num => num > 20);
+console.log("First number greater than 20: " + firstGreaterThan20);
 
-    if(password === correctPass){
-        console.log("Login Success.");
-        break;
+// Task 8: 
+
+let orders = [
+    {id: 1, amount: 500, status: "delivered"},
+    {id: 2, amount: 1500, status: "pending"},
+    {id: 3, amount: 2000, status: "delivered"}
+]
+
+// Total revenue of delivered orders
+let totalRevenue = orders.reduce((total, order) => {
+    if (order.status === "delivered") {
+        return total + order.amount;
     }
-}
-if(password !== correctPass){
-    console.log("Login failed. Max attempts reached.");
-}
+    return total;
+}, 0);
+console.log("Total Revenue from Delivered Orders: " + totalRevenue);
 
-// Task 5: Coupon Generator (Generator Function)
+// Get all pending orders
+let pendingOrders = orders.filter(order => order.status === "pending");
+console.log("Pending Orders: ", pendingOrders);
 
-// Concepts: generator
+// Check if any order > 1000
+let hasHighValueOrder = orders.some(order => order.amount > 1000);
+console.log("Any order greater than 1000? " + hasHighValueOrder);
 
-function* couponGenerator() {
-    yield "10% OFF";
-    yield "20% OFF";
-    yield "Free Delivery";
-    yield "Cashback";
-}
-const coupons = couponGenerator();
-console.log(coupons.next().value);
-console.log(coupons.next().value);
-console.log(coupons.next().value);
-console.log(coupons.next().value);
-
-//  Task 6: Shopping Cart Total (for...of)
-
-// Concepts: for...of
-
-let cart = [100,200,300,400];
-
-let total = 0;
-
-for(let price of cart){
-    total += price;
-}
-
-console.log("Final amount: " + total);
-
-// Task 7: User Profile System (for...in)
-
-// Concepts: for...in
-let userProfile = {
-    name: "Priyadharsini",
-    role: "Developer",
-    location: "India"
-}
-for(let key in userProfile){
-    console.log(key + ": " + userProfile[key]);
-}
-
-// Task 8: Factory Pattern (Function Reuse)
-
-// Concepts: return, reuse
-
-function createPhone(){
-    return "Phone";
-}
-function createBattery(){
-    return "Battery";
-}
-
-function createCharger(){
-    return "Charger";
-}
-let order = createPhone() + " + " + createBattery() + " + " + createCharger();
-console.log("Your Order: " + order); 
-
-// Task 9: College Form with Default Values
-
-// Concepts: default parameters
-
-function collegeForm(name,age,department = "Not Assigned"){
-    console.log(Name: ${name}, Age: ${age}, Department: ${department});
-}
-collegeForm("Priya", 28, "Microbiology");
-collegeForm("Gowtham", 29);
-
-// Task 10: Currying - EMI Calculator
-
-// Concepts: currying
-
-function emi(principal){
-    return function(rate){
-        return function(time){
-            return (principal * rate * time) / 100;
-        }
-    }
-}
-
-let result = emi(10000)(10)(2);
-console.log("EMI Amount: " + result);
-
-// Task 11: Even / Odd Analyzer
-
-// Concepts: condition, loop
-
-let num = 10;
-
-for(let i = 1; i <= num; i++){
-    if(i % 2 === 0){
-        console.log(i + " is Even");
-    }else{
-        console.log(i + " is Odd");
-    }
-}   
-
-// Task 12: Function Scope Debugging
-
-// Concepts: var, let, const
-
-if(true){
-    var a = 10; // it work because var is function scope/global scope
-    let b = 20; // it will not work because let is block scope
-    const c = 30; // it will not work because const is block scope
-}
-console.log(a); // 10
-//console.log(b); // ReferenceError
-//console.log(c); // ReferenceError
-
-// Task 13: Real-Time Alert System (IIFE)
-
-// Concepts: IIFE
-
-(function announcument(){
-    alert("Flash Sale: 50% OFF on Shirts");
-})()
-
-//Task 14: Marks Calculator with Return
-
-// Concepts: return
-
-function calculateMarks(marks){
-
-    let total = 0;
-    let average = 0;
-    for(let mark of marks){
-        total += mark;
-    }
-    average = total / marks.length;
-    return { total, average };
-
-}   
-let marks = [80, 90, 70];
-let totalMarks = calculateMarks(marks);
-console.log("Total Marks: " + totalMarks.total);
-console.log("Average Marks: " + totalMarks.average);
-
-// Task 15: Retry Offer System (Generator + Condition)
-
-// Concepts: generator, done
-
-function* retryOffer(){
-    yield "10% OFF";
-    yield "20% OFF";
-    yield "30% OFF";
-}   
-
-let offer = retryOffer();
-console.log(offer.next().value); // 10% OFF
-console.log(offer.next().value); // 20% OFF
-console.log(offer.next().value); // 30% OFF
-if(offer.next().done){
-    console.log("All Offers Expired.");
-}
+//Sort orders by amount (ascending)
+let sortedOrders = orders.sort((a, b) => a.amount - b.amount);
+console.log("Orders sorted by amount: ", sortedOrders);
