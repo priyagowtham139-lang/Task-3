@@ -1,149 +1,238 @@
- // Task: Product Listing Dashboard (Real-Time API Project)
+// Task -1  E-Commerce Discount System
 
-//Fetch Data
+// Concepts: function, parameters, return, condition
 
-let apiUrl = "https://fakestoreapi.com/products";
+function calculateDiscount(productName,price) {
+    let finalPrice;
 
-let productContainer = document.getElementById("products");
-let searchInput = document.getElementById("product-search");
-let categoryFilter = document.getElementById("category-filter");
-let sortLowHighBtn = document.getElementById("sort-low-high");
-let sortHighLowBtn = document.getElementById("sort-high-low");
-let modal = document.getElementById("detail-modal");
-let modalClose = document.getElementById("modal-close");
-let modalTitle = document.getElementById("modal-title");
-let modalImage = document.getElementById("modal-image");
-let modalDescription = document.getElementById("modal-description");
-let modalPrice = document.getElementById("modal-price");
-let modalCategory = document.getElementById("modal-category");
-let allProducts = [];
-let currentSort = null;
-
-productContainer.innerHTML = "<p style='color:#333; font-size:20px;'>Loading...</p>";
-
-fetch(apiUrl).then((fetchData)=>{
-    console.log(fetchData);
-    return fetchData.json();
-})
-.then((data) => {
-    console.log(data);
-    allProducts = data;
-    updateProducts();
-})
-.catch((error) => {
-    console.error("Error loading data:", error);
-    productContainer.innerHTML = "<p style='color: red; font-size: 20px;'>Error loading data</p>";
-});
-
-if (searchInput) {
-    searchInput.addEventListener("input", () => {
-        updateProducts();
-    });
+    if(price >  1000){
+        finalPrice = price - (price * 20 / 100);
+    }else{
+        finalPrice = price - (price * 10 / 100);
+    }
+    return Product: ${productName}\nFinal Price: ${finalPrice};
 }
 
-if (categoryFilter) {
-    categoryFilter.addEventListener("change", () => {
-        updateProducts();
-    });
+console.log(calculateDiscount("Shoe", 2000));
+
+// Task -2 Order Processing using Callback
+
+// Concepts: callback, higher order function
+
+function payment(amount){
+    console.log(Payment of ${amount} successfull.);
 }
 
-if (sortLowHighBtn) {
-    sortLowHighBtn.addEventListener("click", () => {
-        currentSort = "low-high";
-        sortLowHighBtn.classList.add("active");
-        sortHighLowBtn?.classList.remove("active");
-        updateProducts();
-    });
+function orderSucess(){
+    console.log("Order Delivered");
 }
 
-if (sortHighLowBtn) {
-    sortHighLowBtn.addEventListener("click", () => {
-        currentSort = "high-low";
-        sortHighLowBtn.classList.add("active");
-        sortLowHighBtn?.classList.remove("active");
-        updateProducts();
-    });
+function placeOrder(callback){
+    console.log("Order Placed");
+    payment(500);
+    callback();
 }
 
-if (modalClose) {
-    modalClose.addEventListener("click", () => {
-        hideModal();
-    });
+placeOrder(orderSucess);
+
+// Task - 3 Employee Data Loop System
+
+// Concepts: loop, array, object
+
+let employees = [
+    {name:"Priya", salary: 90000},
+    {name:"Gowtham", salary: 80000},
+];
+
+for(let i = 0; i < employees.length; i++){
+    let employee = employees[i];
+
+
+    if(employee.salary > 60000){
+        console.log(employee.name + " High salary");
+    }else{
+        console.log(employee.name + " Low salary");
+    }
 }
 
-if (modal) {
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            hideModal();
+// Task - 4 Login Attempts(While Loop)
+
+// concepts: while loop
+
+const correctPass = '1234';
+
+let attempts = 0;
+let maxAttempts = 3;
+let password;
+
+while(attempts < maxAttempts){
+    attempts++;
+    console.log("Attempt "+ attempts);
+
+    //password = prompt("Enter your password: ");
+
+    if(password === correctPass){
+        console.log("Login Success.");
+        break;
+    }
+}
+if(password !== correctPass){
+    console.log("Login failed. Max attempts reached.");
+}
+
+// Task 5: Coupon Generator (Generator Function)
+
+// Concepts: generator
+
+function* couponGenerator() {
+    yield "10% OFF";
+    yield "20% OFF";
+    yield "Free Delivery";
+    yield "Cashback";
+}
+const coupons = couponGenerator();
+console.log(coupons.next().value);
+console.log(coupons.next().value);
+console.log(coupons.next().value);
+console.log(coupons.next().value);
+
+//  Task 6: Shopping Cart Total (for...of)
+
+// Concepts: for...of
+
+let cart = [100,200,300,400];
+
+let total = 0;
+
+for(let price of cart){
+    total += price;
+}
+
+console.log("Final amount: " + total);
+
+// Task 7: User Profile System (for...in)
+
+// Concepts: for...in
+let userProfile = {
+    name: "Priyadharsini",
+    role: "Developer",
+    location: "India"
+}
+for(let key in userProfile){
+    console.log(key + ": " + userProfile[key]);
+}
+
+// Task 8: Factory Pattern (Function Reuse)
+
+// Concepts: return, reuse
+
+function createPhone(){
+    return "Phone";
+}
+function createBattery(){
+    return "Battery";
+}
+
+function createCharger(){
+    return "Charger";
+}
+let order = createPhone() + " + " + createBattery() + " + " + createCharger();
+console.log("Your Order: " + order); 
+
+// Task 9: College Form with Default Values
+
+// Concepts: default parameters
+
+function collegeForm(name,age,department = "Not Assigned"){
+    console.log(Name: ${name}, Age: ${age}, Department: ${department});
+}
+collegeForm("Priya", 28, "Microbiology");
+collegeForm("Gowtham", 29);
+
+// Task 10: Currying - EMI Calculator
+
+// Concepts: currying
+
+function emi(principal){
+    return function(rate){
+        return function(time){
+            return (principal * rate * time) / 100;
         }
-    });
-}
-
-function updateProducts() {
-    const query = searchInput?.value.trim().toLowerCase() ?? "";
-    const selectedCategory = categoryFilter?.value ?? "all";
-
-    let filteredProducts = allProducts.filter(product => {
-        const matchesTitle = product.title.toLowerCase().includes(query);
-        const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-        return matchesTitle && matchesCategory;
-    });
-
-    if (currentSort === "low-high") {
-        filteredProducts.sort((a, b) => a.price - b.price);
-    } else if (currentSort === "high-low") {
-        filteredProducts.sort((a, b) => b.price - a.price);
     }
-
-    displayProducts(filteredProducts);
 }
 
-// Display Products
+let result = emi(10000)(10)(2);
+console.log("EMI Amount: " + result);
 
-function displayProducts(products) {
-    productContainer.innerHTML = "";
+// Task 11: Even / Odd Analyzer
 
-    if (!products.length) {
-        productContainer.innerHTML = "<p style='color:#333; font-size:1.1em;'>No products match your search.</p>";
-        return;
+// Concepts: condition, loop
+
+let num = 10;
+
+for(let i = 1; i <= num; i++){
+    if(i % 2 === 0){
+        console.log(i + " is Even");
+    }else{
+        console.log(i + " is Odd");
     }
+}   
 
-    products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "card";
+// Task 12: Function Scope Debugging
 
-        card.innerHTML = `
-        <h1>${product.title.slice(0,20)}</h1>
-        <img src="${product.image}" alt="${product.title}">
-        <p>${product.description.slice(0,100)}...</p>
-        <div class="card-footer">
-            <button class="price-btn">${product.price}</button>
-            <button class="view-btn">View More</button>
-        </div>
-        `;
+// Concepts: var, let, const
 
-        const viewBtn = card.querySelector(".view-btn");
-        viewBtn.addEventListener("click", () => {
-            showProductDetails(product);
-        });
-
-        productContainer.appendChild(card);
-    });
+if(true){
+    var a = 10; // it work because var is function scope/global scope
+    let b = 20; // it will not work because let is block scope
+    const c = 30; // it will not work because const is block scope
 }
+console.log(a); // 10
+//console.log(b); // ReferenceError
+//console.log(c); // ReferenceError
 
-function showProductDetails(product) {
-    if (!modal) return;
+// Task 13: Real-Time Alert System (IIFE)
 
-    modalTitle.textContent = product.title;
-    modalImage.src = product.image;
-    modalImage.alt = product.title;
-    modalDescription.textContent = product.description;
-    modalPrice.textContent = `Price: $${product.price}`;
-    modalCategory.textContent = `Category: ${product.category}`;
-    modal.classList.remove("hidden");
-}
+// Concepts: IIFE
 
-function hideModal() {
-    if (!modal) return;
-    modal.classList.add("hidden");
+(function announcument(){
+    alert("Flash Sale: 50% OFF on Shirts");
+})()
+
+//Task 14: Marks Calculator with Return
+
+// Concepts: return
+
+function calculateMarks(marks){
+
+    let total = 0;
+    let average = 0;
+    for(let mark of marks){
+        total += mark;
+    }
+    average = total / marks.length;
+    return { total, average };
+
+}   
+let marks = [80, 90, 70];
+let totalMarks = calculateMarks(marks);
+console.log("Total Marks: " + totalMarks.total);
+console.log("Average Marks: " + totalMarks.average);
+
+// Task 15: Retry Offer System (Generator + Condition)
+
+// Concepts: generator, done
+
+function* retryOffer(){
+    yield "10% OFF";
+    yield "20% OFF";
+    yield "30% OFF";
+}   
+
+let offer = retryOffer();
+console.log(offer.next().value); // 10% OFF
+console.log(offer.next().value); // 20% OFF
+console.log(offer.next().value); // 30% OFF
+if(offer.next().done){
+    console.log("All Offers Expired.");
 }
