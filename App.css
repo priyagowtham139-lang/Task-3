@@ -1,47 +1,71 @@
- App.css                                                                                                                                                                                                                             body {
-  margin: 0;
-  padding: 0;
+ body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
 }
-
-.title {
-  text-align: center;
-  padding: 20px;
-  color: #333;
-}
-
+ 
 .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.card {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
   background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
 }
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h2 {
-  color: #0077ff;
-  margin-bottom: 15px;
-}
-
-.card p {
-  margin: 8px 0;
-  color: #555;
-}
-
-.status {
+ 
+h1 {
   text-align: center;
-  margin-top: 50px;
-  color: red;
+  margin-bottom: 20px;
+}
+ 
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+ 
+.form input {
+  padding: 10px;
+  flex: 1;
+}
+ 
+.form button {
+  padding: 10px 20px;
+  background: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+ 
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+ 
+table th {
+  background: #333;
+  color: white;
+}
+ 
+.edit-btn {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+ 
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
 }
